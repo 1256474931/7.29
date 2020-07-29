@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        // 1,计时的时间标准  1970年1月1日
+        // 毫秒计时
+        // 地域的标准  格林尼治时间   北京时间  utc标准
+        // 闰年  闰秒 
+
+        // 1，日期在js中也是一个对象
+        // 2，实例化日期对象的时候，日期对象里面包含的是当前时间信息
+        // 3，如果说获取的时间对象，是指定时间的对象
+            // 时间戳，  1970到2030年毫秒的值  超出数值的可阅读区间
+        //通过js获取的时间是自己电脑上的时间，自己的电脑上时间有问题，时间就有问题
+
+        // var date=new Date (2006,02,07,3,24,0)
+        // console.log(date)
+        // console.log(date.getTime())
+        // var current=new Date();
+        // console.log(current.getFullYear())
+        // console.log(current.getMonth())月份0-11
+        // console.log(current.getDate())
+        // console.log(current.getHours())
+        // Console.log(current.getMinutes())
+        // console.log(current.getUTCSeconds())
+        // console.log(current.getDate())
+
+
+        // var date=new Date();
+        // console.log(date)
+        // date.setFullYear(2019)
+
+        // 秒杀   淘宝  秒杀的时间2020，8，1  10：10：20
+        // 距离秒杀时间的倒计时，时间的变化  还剩x天，x小时，x分，x秒
+    </script>
+    倒计时：<span></span>天<span></span>小时<span></span>分钟<span></span>秒
+    <script>
+
+
+// opts 参数对象    opts.end数组类型 年月日  时分秒
+// opts.ele 数组类型 日时分秒
+
+
+
+
+        function settime(opts){
+        
+        var end=new Date(opts.end[0],opts.end[1],opts.end[2],opts.end[3],opts.end[4],opts.end[5]);
+        // end.setFullYear(2020);
+        // end.setMonth(7)
+        // end.setDate(1)
+        // end.setHours(10)
+        // end.setMinutes(10)
+        // end.setSeconds(20)
+        var endTime=end.getTime()/1000
+        var t=setInterval(run,1000)
+        run()
+        function run(){
+            var current=new Date();
+            var currentTime=current.getTime()/1000;
+            var diff=endTime-currentTime;
+            if(diff<0){
+                console.error("时间不对")
+                clearInterval(t);
+            }
+            var day=parseInt(diff/(60*60*24));
+            diff%=(60*60*24);
+            var hours=parseInt(diff/(60*60))
+            diff%=60*60
+            var min=parseInt(diff/60)
+            diff%=60
+            var sed=parseInt(diff)
+           opts.ele[0].innerHTML=day;
+           opts.ele[1].innerHTML=hours;
+           opts.ele[2].innerHTML=min;
+           opts.ele[3].innerHTML=sed;
+        }
+        
+        }
+        
+        
+
+        var timeEle=document.querySelectorAll("span")
+       settime({
+           end:[2020,8,10,10,10,10],
+           ele:[timeEle[0],timeEle[1],timeEle[2],timeEle[3]]
+       })
+          
+    </script>
+</body>
+</html>

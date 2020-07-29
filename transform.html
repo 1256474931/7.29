@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .scene{
+            perspective: 800px;   
+            /* perspective-origin: center 3000px; */
+            width: 200px;
+            height: 200px;
+            border: 1px solid blue;
+
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+            bottom: 0;
+            top: 0;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            background: blue;
+            /* transform: translate(); */
+            
+            
+        }
+        div:hover{
+                transform:rotateX(30deg)
+            }
+    </style>
+</head>
+<body>
+    <div class="scene">
+        <div class="box">
+
+        </div>
+</div>
+</body>
+</html>
